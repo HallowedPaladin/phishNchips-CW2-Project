@@ -1,0 +1,70 @@
+# Entire inventory data system for our Fish and Chips shop, if you wanna add more then make it inline with the existing format.
+inventory = [
+    {"name": "Haddock and Chips", "price": 12.99, "id": "M101", "quantity": 18, "category": "main"},
+    {"name": "Cod and Chips", "price": 13.99, "id": "M102", "quantity": 28, "category": "main"},
+    {"name": "8 pc Chicken Nuggets and Chips", "price": 11.99, "id": "M103", "quantity": 14, "category": "main"},
+    {"name": "Steak Pie and Chips", "price": 13.99, "id": "M104", "quantity": 21, "category": "main"},
+    {"name": "Scampi and Chips", "price": 14.99, "id": "M105", "quantity": 15, "category": "main"},
+    {"name": "Battered Sausage and Chips", "price": 10.99, "id": "M106", "quantity": 22, "category": "main"},
+    {"name": "6 pc Onion Rings", "price": 5.99, "id": "S101", "quantity": 25, "category": "side"},
+    {"name": "Small Chips", "price": 4.99, "id": "S102", "quantity": 20, "category": "side"},
+    {"name": "Large Chips", "price": 7.99, "id": "S103", "quantity": 18, "category": "side"},
+    {"name": "Chip Shop Curry", "price": 2.99, "id": "S104", "quantity": 16, "category": "side"},
+    {"name": "Mushy Peas", "price": 2.99, "id": "S105", "quantity": 30, "category": "side"},
+    {"name": "Water", "price": 1.50, "id": "D101", "quantity": 15, "category": "drink"},
+    {"name": "Coke", "price": 2.00, "id": "D102", "quantity": 18, "category": "drink"},
+    {"name": "Fanta", "price": 2.00, "id": "D103", "quantity": 23, "category": "drink"},
+    {"name": "Sprite", "price": 2.00, "id": "D104", "quantity": 26, "category": "drink"},
+]
+
+
+# My version of the update inventory function, if you wanna change it to make it better then go ahead :)
+def update_inventory(inventory):
+    item_id = input("Enter the item ID to update: ").upper()
+
+    for item in inventory:
+        if item["id"] == item_id:
+            print("\nLeave blank to keep the current value.")
+
+            new_name = input(f'New name ({item["name"]}): ')
+            new_price = input(f'New price (£{item["price"]}): ')
+            new_quantity = input(f'New quantity ({item["quantity"]}): ')
+            new_category = input(f'New category ({item["category"]}): ')
+
+            if new_name != "":
+                item["name"] = new_name
+
+            if new_price != "":
+                try:
+                    item["price"] = float(new_price)
+                except ValueError:
+                    print("Invalid price. Price not updated.")
+
+            if new_quantity != "":
+                try:
+                    item["quantity"] = int(new_quantity)
+                except ValueError:
+                    print("Invalid quantity. Quantity not updated.")
+
+            if new_category != "":
+                item["category"] = new_category.lower()
+
+            print("\nItem updated successfully.")
+            return
+
+    print("\nItem ID not found.")
+
+# My attempt at the low stock check extension task, if you wanna improve it then feel free :)
+def low_stock_check(inventory):
+    print("\nLow stock items (quantity below 6):")
+    print("-" * 40)
+
+    found = False
+
+    for item in inventory:
+        if item["quantity"] < 6:
+            print(f'{item["id"]} | {item["name"]} | Qty: {item["quantity"]} | LOW STOCK')
+            found = True
+
+    if not found:
+        print("No items are currently low in stock.")
