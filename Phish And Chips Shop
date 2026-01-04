@@ -1,3 +1,4 @@
+
 # Entire inventory data system for our Fish and Chips shop, if you wanna add more then make it inline with the existing format.
 inventory = [
     {"name": "Haddock and Chips", "price": 12.99, "id": "M101", "quantity": 18, "category": "main"},
@@ -14,15 +15,44 @@ inventory = [
     {"name": "Water", "price": 1.50, "id": "D101", "quantity": 15, "category": "drink"},
     {"name": "Coke", "price": 2.00, "id": "D102", "quantity": 18, "category": "drink"},
     {"name": "Fanta", "price": 2.00, "id": "D103", "quantity": 23, "category": "drink"},
-    {"name": "Sprite", "price": 2.00, "id": "D104", "quantity": 26, "category": "drink"},
+    {"name": "Sprite", "price": 2.00, "id": "D104", "quantity": 26, "category": "drink"}
 ]
 
+
+# Function to print tables using standard library only
+def print_table_std_lib(headers, data):
+    if not data: return
+    col_widths = [len(h) for h in headers]
+    for row in data:
+        for i, cell in enumerate(row):
+            if len(str(cell)) > col_widths[i]: 
+                col_widths[i] = len(str(cell))
+    col_widths = [w + 2 for w in col_widths] 
+    format_string = "| " + " | ".join([f"{{:<{w}}}" for w in col_widths]) + " |" 
+    separator = "-" * (sum(col_widths) + (len(col_widths) * 3) + 1) 
+    print(separator)
+    print(format_string.format(*headers))
+    print(separator)
+    for row in data:
+        print(format_string.format(*[str(c) for c in row]))
+    print(separator)
 
 # View inventory function to display all items
 def view_inventory(inventory):
     print("\n-- Current Inventory --")
+    # Preparing the data for printing
+    headers = ["ID", "Name", "Price (£)", "Quantity", "Category"]
+    table_data = []
     for item in inventory:
-        print(f'{item["id"]} | {item["name"]} | £{item["price"]:.2f} | Quantity: {item["quantity"]} | Category: {item["category"]}')
+        table_data.append([
+            item['id'],
+            item['name'],
+            f"{item['price']:.2f}",
+            item['quantity'],
+            item['category']
+        ])
+    
+    print_table_std_lib(headers, table_data)
 
 
 # My version of the update inventory function, if you wanna change it to make it better then go ahead :)
