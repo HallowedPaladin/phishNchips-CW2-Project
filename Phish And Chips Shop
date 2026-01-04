@@ -17,6 +17,11 @@ inventory = [
     {"name": "Sprite", "price": 2.00, "id": "D104", "quantity": 26, "category": "drink"},
 ]
 
+# View inventory function to display all items in a formatted way
+def view_inventory(inventory):
+    print("\n-- Current Inventory --")
+    for item in inventory:
+        print(f'{item["id"]} | {item["name"]} | £{item["price"]} | Qty: {item["quantity"]} | Category: {item["category"]}')
 
 # My version of the update inventory function, if you wanna change it to make it better then go ahead :)
 def update_inventory(inventory):
