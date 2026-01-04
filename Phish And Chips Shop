@@ -19,7 +19,7 @@ inventory = [
 ]
 
 
-# Function to print tables using standard library only
+# Function to print tables using the standard library only
 def print_table_std_lib(headers, data):
     if not data: return
     col_widths = [len(h) for h in headers]
@@ -37,7 +37,7 @@ def print_table_std_lib(headers, data):
         print(format_string.format(*[str(c) for c in row]))
     print(separator)
 
-# View inventory function to display all items
+# View inventory function to display all the items
 def view_inventory(inventory):
     print("\n-- Current Inventory --")
     # Preparing the data for printing
