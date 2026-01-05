@@ -23,7 +23,14 @@ inventory =[
     {"name":"juice","price":0.80,"category":"drinks","quantity":0}
 ]
 
-
+def add_stock(item_name,amount):
+    for item in inventory:
+        if item["name"]==item_name:
+            item["quantity"] += amount
+            print(f{amount} added to {item_name}). New quantity: {item["quantity"]}
+            return
+    print("item not found")
+    
 
 # Function to print tables using the standard library only
 def print_table_std_lib(headers, data):
