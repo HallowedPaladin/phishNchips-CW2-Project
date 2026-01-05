@@ -1,22 +1,28 @@
 
 # Entire inventory data system for our Fish and Chips shop, if you wanna add more then make it inline with the existing format.
-inventory = [
-    {"name": "Haddock and Chips", "price": 12.99, "id": "M101", "quantity": 18, "category": "main"},
-    {"name": "Cod and Chips", "price": 13.99, "id": "M102", "quantity": 28, "category": "main"},
-    {"name": "8 pc Chicken Nuggets and Chips", "price": 11.99, "id": "M103", "quantity": 14, "category": "main"},
-    {"name": "Steak Pie and Chips", "price": 13.99, "id": "M104", "quantity": 21, "category": "main"},
-    {"name": "Scampi and Chips", "price": 14.99, "id": "M105", "quantity": 15, "category": "main"},
-    {"name": "Battered Sausage and Chips", "price": 10.99, "id": "M106", "quantity": 22, "category": "main"},
-    {"name": "6 pc Onion Rings", "price": 5.99, "id": "S101", "quantity": 25, "category": "side"},
-    {"name": "Small Chips", "price": 4.99, "id": "S102", "quantity": 20, "category": "side"},
-    {"name": "Large Chips", "price": 7.99, "id": "S103", "quantity": 18, "category": "side"},
-    {"name": "Chip Shop Curry", "price": 2.99, "id": "S104", "quantity": 16, "category": "side"},
-    {"name": "Mushy Peas", "price": 2.99, "id": "S105", "quantity": 30, "category": "side"},
-    {"name": "Water", "price": 1.50, "id": "D101", "quantity": 15, "category": "drink"},
-    {"name": "Coke", "price": 2.00, "id": "D102", "quantity": 18, "category": "drink"},
-    {"name": "Fanta", "price": 2.00, "id": "D103", "quantity": 23, "category": "drink"},
-    {"name": "Sprite", "price": 2.00, "id": "D104", "quantity": 26, "category": "drink"}
+#make lists/ variables
+inventory =[
+    {"name":"cod","price":7.70,"category":"mains","quantity":0},
+    {"name":"salmon","price":9.50,"category":"mains","quantity":0},
+    {"name":"haddock","price":5.50,"category":"mains","quantity":0},
+    {"name":"mushroom","price":4.90,"category":"mains","quantity":0},
+    {"name":"plaice","price":8.0,"category":"mains","quantity":0},
+    {"name":"veggie","price":5.00,"category":"mains","quantity":0},
+    {"name":"fries","price":2.00,"category":"sides","quantity":0},
+    {"name":"onion rings","price":2.00,"category":"sides","quantity":0},
+    {"name":"calamari rings","price":3.00,"category":"sides","quantity":0},
+    {"name":"chiken nuggets","price":2.50,"category":"sides","quantity":0},
+    {"name":"fish fingers","price":2.50,"category":"sides","quantity":0},
+    {"name":"sausage small","price":2.00,"category":"sides","quantity":0},
+    {"name":"sausage large","price":3.00,"category":"sides","quantity":0},
+    {"name":"mozzarella sticks","price":2.00,"category":"drinks","quantity":0},
+    {"name":"coke","price":1.0,"category":"drinks","quantity":0},
+    {"name":"sprite","price":0.80,"category":"drinks","quantity":0},
+    {"name":"tango","price":0.80,"category":"drinks","quantity":0},
+    {"name":"coke zero","price":0.80,"category":"drinks","quantity":0},
+    {"name":"juice","price":0.80,"category":"drinks","quantity":0}
 ]
+
 
 
 # Function to print tables using the standard library only
