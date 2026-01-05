@@ -1,30 +1,3 @@
-
-# Entire inventory data system for our Fish and Chips shop, if you wanna add more then make it inline with the existing format.
-#make lists/ variables
-inventory =[
-    {"name":"cod","price":7.70,"category":"mains","quantity":0},
-    {"name":"salmon","price":9.50,"category":"mains","quantity":0},
-    {"name":"haddock","price":5.50,"category":"mains","quantity":0},
-    {"name":"mushroom","price":4.90,"category":"mains","quantity":0},
-    {"name":"plaice","price":8.0,"category":"mains","quantity":0},
-    {"name":"veggie","price":5.00,"category":"mains","quantity":0},
-    {"name":"fries","price":2.00,"category":"sides","quantity":0},
-    {"name":"onion rings","price":2.00,"category":"sides","quantity":0},
-    {"name":"calamari rings","price":3.00,"category":"sides","quantity":0},
-    {"name":"chiken nuggets","price":2.50,"category":"sides","quantity":0},
-    {"name":"fish fingers","price":2.50,"category":"sides","quantity":0},
-    {"name":"sausage small","price":2.00,"category":"sides","quantity":0},
-    {"name":"sausage large","price":3.00,"category":"sides","quantity":0},
-    {"name":"mozzarella sticks","price":2.00,"category":"drinks","quantity":0},
-    {"name":"coke","price":1.0,"category":"drinks","quantity":0},
-    {"name":"sprite","price":0.80,"category":"drinks","quantity":0},
-    {"name":"tango","price":0.80,"category":"drinks","quantity":0},
-    {"name":"coke zero","price":0.80,"category":"drinks","quantity":0},
-    {"name":"juice","price":0.80,"category":"drinks","quantity":0}
-]
-
-
-
 # Function to print tables using the standard library only
 def print_table_std_lib(headers, data):
     if not data: return
@@ -111,3 +84,99 @@ def low_stock_check(inventory):
 
     if not found:
         print("No items are currently low in stock.")
+
+
+import json #Importing json
+fileName = "inventory.json"
+exit = False
+
+def search(inventory):
+    found = False
+    #This will read the file and save load it as the variable items
+    with open("inventory.json","r") as file:
+        items = json.load(file)
+
+    #This will ask the user to enter what they wish to search by
+    search_by = input("What would you like to search by: ID, Name, Price, Quantity: ")
+
+    #If id is entered this code will run
+    if search_by.lower() == "id":
+        id = int(input("Enter the ID of an item: "))
+        for item in items:
+            if item["id"] == id:
+                found = True
+                price = item["price"]
+                print("Item found, detials below:")
+                print(f"ID: {item["id"]} Name: {item["name"]} Price: £{price:.2f} Quantity: {item["quantity"]}")
+
+    #If name is entered this code will run
+    elif search_by.lower() == "name":
+        name = input("Enter the name of an item: ")
+        for item in items:
+            if item["name"] == name.lower():
+                found = True
+                price = item["price"]
+                print("Item found, detials below:")
+                print(f"ID: {item["id"]} Name: {item["name"]} Price: £{price:.2f} Quantity: {item["quantity"]}")
+
+    #If price is entered this code will run
+    elif search_by.lower() == "price":
+        price = float(input("Enter the price of an item: "))
+        for item in items:
+            if item["price"] == price:
+                found = True
+                price = item["price"]
+                print("Item found, detials below:")
+                print(f"ID: {item["id"]} Name: {item["name"]} Price: £{price:.2f} Quantity: {item["quantity"]}")
+
+    #If quantity is entered this code will run
+    elif search_by.lower() == "quantity":
+        quantity = int(input("Enter the quantity of an item: "))
+        for item in items:
+            if item["quantity"] == quantity:
+                found = True
+                price = item["price"]
+                print("Item found, detials below:")
+                print(f"ID: {item["id"]} Name: {item["name"]} Price: £{price:.2f} Quantity: {item["quantity"]}")
+
+    #If an invalid input is entered this code will run
+    else:
+        print("Invalid input")
+
+    #If the item is not found it will inform the user
+    if found == False:
+        print("Item not found")
+
+#This is a while loop that will continue to ask the user what changes they wish to make to the inventory file until they type in Exit
+while exit == False:
+    #This is an input variable that will ask the user to enter an action and will direct them to the correct if statement
+    action = input("Which of the following would you like to do: Add Item, View Stock, Update Item, Search, Exit: ")
+
+    #If the user enters add item, this code will run
+    if action.lower() == "add item":
+        print("Add Item")
+
+    #If the user enters view stock, this code will run
+    elif action.lower() == "view stock":
+        view_inventory(fileName)
+
+    #If the user enters update stock, this code will run
+    elif action.lower() == "update item":
+         update_inventory(fileName)
+         low_stock_check(fileName)
+
+    #If the user enters search, this code will run
+    elif action.lower() == "search":
+        search(fileName)
+
+    #If the user enters exit, this code will run
+    elif action.lower() == "exit":
+        print("Your changes have been saved. Have a nice day!")
+        exit = True
+
+    #If the user enteres an invalid input this code will run
+    else:
+        print("Invalid input")
+
+
+
