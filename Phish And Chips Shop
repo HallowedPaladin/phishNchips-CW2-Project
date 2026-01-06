@@ -70,40 +70,37 @@ def view_inventory(inventory):
     
     print_table_std_lib(headers, table_data)
 
-def update_inventory(inventory):
-    item_id = input("Enter the item ID to update: ").lower()
-
+def update_item(inventory, product_id):
+    product_id = int(product_id)  # Ensure comparison matches string IDs
     for item in inventory:
-        if item["id"] == item_id:
-            print("\nLeave blank to keep the current value.")
+        if item["id"] == product_id:
+            print(f"Item found: {item['name']}")
 
-            new_name = input(f'New name ({item["name"]}): ')
-            new_price = input(f'New price (£{item["price"]}): ')
-            new_quantity = input(f'New quantity ({item["quantity"]}): ')
-            new_category = input(f'New category ({item["category"]}): ')
+            # Update name
+            selection = input("Do you want to update this item's name? Y or N: ")
+            if selection.lower() == "yes" or selection.lower() == "y":
+                newName = input("Please enter the item's new name: ")
+                item["name"] = newName
+                print(f"Name updated to {item['name']}.")
 
-            if new_name != "":
-                item["name"] = new_name
+            # Update price
+            selection = input("Do you want to update this item's price? Y or N: ")
+            if selection.lower() == "yes" or selection.lower() == "y":
+                newPrice = float(input("Please enter new price: "))
+                item["price"] = newPrice
+                print(f"Price updated to £{item['price']:.2f}.")
 
-            if new_price != "":
-                try:
-                    item["price"] = float(new_price)
-                except ValueError:
-                    print("Invalid price. Price not updated.")
+            # Update quantity
+            selection = input("Do you want to update this item's amount of stock? Y or N: ")
+            if selection.lower() == "yes" or selection.lower() == "y":
+                amount = int(input("Please enter an amount to update stock by: "))
+                item["quantity"] += amount
+                print(f"New quantity: {item['quantity']}")
 
-            if new_quantity != "":
-                try:
-                    item["quantity"] = int(new_quantity)
-                except ValueError:
-                    print("Invalid quantity. Quantity not updated.")
+            return True  # Found and updated
 
-            if new_category != "":
-                item["category"] = new_category.lower()
-
-            print("\nItem updated successfully.")
-            return True
-
-    print("\nItem ID not found.")
+    # If loop finishes without returning
+    print("This product ID is not valid.")
     return False
 
 def low_stock_check(inventory):
@@ -187,8 +184,9 @@ while not exit:
         view_inventory(inventory)
 
     elif action.lower() == "update item":
-        if update_inventory(inventory):
-            save_inventory(fileName, inventory) 
+        product_id = int(input("Please enter the product ID of the item you wish to update: "))
+        if update_item(inventory, product_id):
+            save_inventory(fileName, inventory)  # Auto-save after successful update
         low_stock_check(inventory)
 
     elif action.lower() == "search":
