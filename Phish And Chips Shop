@@ -11,20 +11,12 @@ def adding_stock(item_name,pricing,item_category,stock_quantity):
     pricing = float(input("please input the price: "))
     item_category =input("please input the category: ")
     stock_quantity =int(input("please input the quantity: "))
-    inventory.append({
-    "name": stock_name,
-    "price": price,
-    "category": category,
-    "quantity": quantity,
+    inventory_list.append({
+    "name": item_name,
+    "price": pricing,
+    "category": item_category,
+    "quantity": stock_quantity,
     })
-
-
-inventory.append({
-"name": stock_name,
-"price": price,
-"category": category,
-"quantity": quantity,
-})
 
     
 
