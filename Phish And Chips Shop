@@ -38,10 +38,10 @@ def adding_stock(inventory):
 
     print("Item added successfully.")
 
-def print_table_std_lib(headers, data):
-    if not data: return
+def print_table_std_lib(headers, table_data):
+    if not table_data: return
     col_widths = [len(h) for h in headers]
-    for row in data:
+    for row in table_data:
         for i, cell in enumerate(row):
             if len(str(cell)) > col_widths[i]: 
                 col_widths[i] = len(str(cell))
@@ -51,7 +51,7 @@ def print_table_std_lib(headers, data):
     print(separator)
     print(format_string.format(*headers))
     print(separator)
-    for row in data:
+    for row in table_data:
         print(format_string.format(*[str(c) for c in row]))
     print(separator)
 
