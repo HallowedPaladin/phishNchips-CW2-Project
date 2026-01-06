@@ -7,20 +7,26 @@
 #     print("item not found")
 
 def adding_stock():
-    
+    #load invneotry 
+    with open("inventory.json", "r") as file:
+        inventory = json.load(file)
+
     item_name = input("Please input the name of the stock you wish to add: ")
     pricing = float(input("Please input the price: "))
     i_d = input("Please input the item ID: ")
     item_category = input("Please input the category: ")
     stock_quantity = int(input("Please input the quantity: "))
-
-    inventory.json.append({
+# add the item
+    inventory.append({
         "name": item_name,
         "price": pricing,
         "id": i_d,
         "category": item_category,
         "quantity": stock_quantity
     })
+# make sure it saves back to json file 
+    with open("inventory.json","w") as file:
+        json.dump(inventory,file,indent=4)
 
     print("Item added successfully.")
 
