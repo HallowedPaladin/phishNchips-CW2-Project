@@ -7,13 +7,14 @@
 #     print("item not found")
 
 def adding_stock():
+    
     item_name = input("Please input the name of the stock you wish to add: ")
     pricing = float(input("Please input the price: "))
     i_d = input("Please input the item ID: ")
     item_category = input("Please input the category: ")
     stock_quantity = int(input("Please input the quantity: "))
 
-    inventory.append({
+    inventory.json.append({
         "name": item_name,
         "price": pricing,
         "id": i_d,
@@ -179,7 +180,7 @@ while exit == False:
 
     #If the user enters add item, this code will run
     if action.lower() == "add item":
-        adding_stock(fileName)
+        adding_stock()
         
 
     #If the user enters view stock, this code will run
