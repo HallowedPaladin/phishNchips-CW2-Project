@@ -84,7 +84,7 @@ def update_item(inventory, product_id):
                 print(f"Name updated to {item['name']}.")
 
             # Update price
-            selection = input("Do you want to update this item's price? Y or N: ")
+            selection = input("Do you waupnt to update this item's price? Y or N: ")
             if selection.lower() == "yes" or selection.lower() == "y":
                 newPrice = float(input("Please enter new price: "))
                 item["price"] = newPrice
