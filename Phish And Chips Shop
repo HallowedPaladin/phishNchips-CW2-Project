@@ -13,9 +13,19 @@ def adding_stock():
 
     item_name = input("Please input the name of the stock you wish to add: ")
     pricing = float(input("Please input the price: "))
-    i_d = input("Please input the item ID: ")
+   
     item_category = input("Please input the category: ")
     stock_quantity = int(input("Please input the quantity: "))
+
+    while True:
+        i_d = input("please iput the items ID: ").lower()
+        #check if any items have the same ID as one currently stored
+        if any(item["id"]== i_d for item in inventory):
+            print("that ID is taken please choose a different one")
+        else:
+            #if id is unique the loop stops
+            break 
+
 # add the item
     inventory.append({
         "name": item_name,
