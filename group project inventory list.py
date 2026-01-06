@@ -1,4 +1,4 @@
-#make lists/ variables
+# create base inventory list (so items can be added/ updated...)
 inventory =[
     {"name":"cod","price":7.70,"id":"m_01","category":"mains","quantity":0},
     {"name":"salmon","price":9.50,"id":"m_02","category":"mains","quantity":0},
@@ -20,6 +20,7 @@ inventory =[
     {"name":"coke zero","price":0.80,"id":"d_05","category":"drinks","quantity":0},
     {"name":"juice","price":0.80,"id":"d_06","category":"drinks","quantity":0}
 ]
+
 
 
 
