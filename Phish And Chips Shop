@@ -6,10 +6,18 @@
 #             return
 #     print("item not found")
 
-name = input("please input the name of the stock you wish to add: ")
-price = float(input("please input the price: "))
-category =input("please input the category: ")
-quantity =int(input("please input the quantity: "))
+def adding_stock(item_name,pricing,item_category,stock_quantity):
+    item_name = input("please input the name of the stock you wish to add: ")
+    pricing = float(input("please input the price: "))
+    item_category =input("please input the category: ")
+    stock_quantity =int(input("please input the quantity: "))
+    inventory.append({
+    "name": stock_name,
+    "price": price,
+    "category": category,
+    "quantity": quantity,
+    })
+
 
 inventory.append({
 "name": stock_name,
