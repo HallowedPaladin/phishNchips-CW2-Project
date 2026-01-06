@@ -4,7 +4,7 @@ inventory =[
     {"name":"salmon","price":9.50,"id":"m_02","category":"mains","quantity":0},
     {"name":"haddock","price":5.50,"id":"m_03","category":"mains","quantity":0},
     {"name":"mushroom","price":4.90,"id":"m_04","category":"mains","quantity":0},
-    {"name":"plaice","price":8.0,""id":"m_05",category":"mains","quantity":0},
+    {"name":"plaice","price":8.0,"id":"m_05","category":"mains","quantity":0},
     {"name":"veggie","price":5.00,"id":"m_06","category":"mains","quantity":0},
     {"name":"fries","price":2.00,"id":"s_01","category":"sides","quantity":0},
     {"name":"onion rings","price":2.00,"id":"s_02","category":"sides","quantity":0},
@@ -20,6 +20,7 @@ inventory =[
     {"name":"coke zero","price":0.80,"id":"d_05","category":"drinks","quantity":0},
     {"name":"juice","price":0.80,"id":"d_06","category":"drinks","quantity":0}
 ]
+
 
 
 
