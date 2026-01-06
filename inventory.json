@@ -138,5 +138,12 @@
         "id": "s_08",
         "category": "side",
         "quantity": 20
+    },
+    {
+        "name": "baguette",
+        "price": 2.49,
+        "id": "127",
+        "category": "mains",
+        "quantity": 27
     }
 ]

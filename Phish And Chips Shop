@@ -1,6 +1,6 @@
 import json
 
-# Load inventory from file
+
 def load_inventory(filename):
     try: #opens the inventory for the other functions to access
         with open(filename, "r") as file:
@@ -9,22 +9,22 @@ def load_inventory(filename):
         print("No existing inventory found. Starting with empty inventory.")
         return [] #error and returns empty list if no file is found
 
-# Save inventory to file
+
 def save_inventory(filename, inventory):
-    with open(filename, "w") as file:
+    with open(filename, "w") as file: #writes all changes made to the file
         json.dump(inventory, file, indent=4)
     print("Changes saved successfully.")
 
 def adding_stock(inventory):
     item_name = input("Please input the name of the stock you wish to add: ")
     pricing = float(input("Please input the price: "))
-    item_category = input("Please input the category: ")
+    item_category = input("Please input the category (mains, sides, drinks): ")
     stock_quantity = int(input("Please input the quantity: "))
 
     while True:
         i_d = input("Please input the items ID: ").lower()
         if any(item["id"] == i_d for item in inventory):
-            print("That ID is taken, please choose a different one")
+            print("That ID is in use, please choose a different one")
         else:
             break 
 
@@ -180,7 +180,7 @@ while not exit:
 
     if action.lower() == "add item":
         adding_stock(inventory)
-        save_inventory(fileName, inventory)  # Auto-save after adding
+        save_inventory(fileName, inventory)  
         
 
     elif action.lower() == "view stock":
@@ -188,15 +188,14 @@ while not exit:
 
     elif action.lower() == "update item":
         if update_inventory(inventory):
-            save_inventory(fileName, inventory)  # Auto-save after successful update
+            save_inventory(fileName, inventory) 
         low_stock_check(inventory)
 
     elif action.lower() == "search":
         search(inventory)
 
-    elif action.lower() == "save & exit" or action.lower() == "exit":
-        save_inventory(fileName, inventory)  # Final save before exiting
-        print("Your changes have been saved. Have a nice day!")
+    elif action.lower() == "save & exit" or action.lower() == "exit" or action.lower() == 'save':
+        save_inventory(fileName, inventory)  
         exit = True
 
     else:
