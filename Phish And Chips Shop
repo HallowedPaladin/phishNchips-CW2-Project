@@ -5,6 +5,19 @@
 #             print(f{amount} added to {item_name}). New quantity: {item["quantity"]}
 #             return
 #     print("item not found")
+
+name = input("please input the name of the stock you wish to add: ")
+price = float(input("please input the price: "))
+category =input("please input the category: ")
+quantity =int(input("please input the quantity: "))
+
+inventory.append({
+"name": stock_name,
+"price": price,
+"category": category,
+"quantity": quantity,
+})
+
     
 
 # Function to print tables using the standard library only
